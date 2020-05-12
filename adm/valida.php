@@ -5,7 +5,7 @@
 	if((isset($_POST['txt_usuario'])) && (isset($_POST['txt_senha']))){
 		$usuario = mysqli_real_escape_string($conn, $_POST['txt_usuario']); //Escapar de caracteres especiais, como aspas, prevenindo SQL injection
 		$senha = mysqli_real_escape_string($conn, $_POST['txt_senha']);
-		$senha = password_hash($senha, PASSWORD_DEFAULT);
+		$senha = md5($senha);
 		
 		$result_usuario = "SELECT * FROM usuarios WHERE email = '$usuario' && senha = '$senha'";
 		$resultado_usuario = mysqli_query($conn, $result_usuario);
